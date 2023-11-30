@@ -11,3 +11,7 @@
 再使用50Mhz带通滤波器选择出信号，就可以产生6m波段的ft8信号。
 
 再通过一个功放部分，就可以组成一个最简单的6m波段发射机。
+
+
+参考项目
+https://github.com/kholia/Easy-FT8-Beacon-v3/blob/master/Easy-FT8-Beacon-v3/Easy-FT8-Beacon-v3.ino
