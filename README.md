@@ -14,7 +14,7 @@
 再通过一个功放部分，就可以组成一个最简单的6m波段发射机。
 
 # 补充部分
-为什么之前的代码无法直接产生6m的ft8，关键在于下面两句代码，FT8_DEFAULT_FREQ的定义为UL，范围太小。 
+为什么之前的代码无法直接产生6m的ft8信号，关键在于下面两句代码，FT8_DEFAULT_FREQ的定义为UL，范围太小。 
 导致FT8_DEFAULT_FREQ赋值给freq后再乘以100发生了回绕。 
 
 #define FT8_DEFAULT_FREQ        25156500UL 
