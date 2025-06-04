@@ -17,8 +17,8 @@
 # 补充部分
 为什么之前的代码无法直接产生6m的ft8，关键在于下面两句代码，FT8_DEFAULT_FREQ的定义为UL，范围太小。 
 导致FT8_DEFAULT_FREQ赋值给freq后再乘以100发生了回绕。 
-#define FT8_DEFAULT_FREQ        25156500UL 
 
+#define FT8_DEFAULT_FREQ        25156500UL 
 
 si5351.set_freq((freq * 100) + (fixed_buffer[i] * tone_spacing), SI5351_CLK1); 
 
