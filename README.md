@@ -15,18 +15,19 @@
 再通过一个功放部分，就可以组成一个最简单的6m波段发射机。
 
 # 补充部分
-为什么之前的代码无法直接产生6m的ft8，关键在于下面两句代码，FT8_DEFAULT_FREQ的定义为UL，范围太小。
-导致FT8_DEFAULT_FREQ赋值给freq后再乘以100发生了回绕。
-#define FT8_DEFAULT_FREQ        25156500UL
-si5351.set_freq((freq * 100) + (fixed_buffer[i] * tone_spacing), SI5351_CLK1);
+为什么之前的代码无法直接产生6m的ft8，关键在于下面两句代码，FT8_DEFAULT_FREQ的定义为UL，范围太小。 
+导致FT8_DEFAULT_FREQ赋值给freq后再乘以100发生了回绕。 
+#define FT8_DEFAULT_FREQ        25156500UL 
+si5351.set_freq((freq * 100) + (fixed_buffer[i] * tone_spacing), SI5351_CLK1); 
 
-因为UL(unsigned long)是 32 位（4 字节），范围：
-0 到 4,294,967,295
-如果freq设置为50313000UL，那么
-50313000UL * 100UL = 5,031,300,000
-由于 5,031,300,000 > 4,294,967,295，计算会回绕（wrap around），最终结果是：
-5,031,300,000 - 4,294,967,296 = 736,332,704。
-解决办法是将UL改为ULL，参考BD6CR的ADT_V1.1代码。
+因为UL(unsigned long)是 32 位（4 字节），范围： 
+0 到 4,294,967,295 
+如果freq设置为50313000UL，那么 
+50313000UL * 100UL = 5,031,300,000 
+由于 5,031,300,000 > 4,294,967,295，计算会回绕（wrap around），最终结果是： 
+5,031,300,000 - 4,294,967,296 = 736,332,704。 
+解决办法是将UL改为ULL，参考BD6CR的ADT_V1.1代码。 
+在直接产生6m信号后，可以减少中周滤波器部分，发射器更简洁
 
 
 
