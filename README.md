@@ -52,3 +52,4 @@ si5351.set_freq((freq * 100) + (fixed_buffer[i] * tone_spacing), SI5351_CLK1);
 参考项目  
 https://github.com/kholia/Easy-FT8-Beacon-v3/blob/master/Easy-FT8-Beacon-v3/Easy-FT8-Beacon-v3.ino  
 https://github.com/etherkit/Si5351Arduino  
+https://groups.io/g/crkits/files/ADT
